@@ -18,9 +18,11 @@ router.get('/', function (req, res, next) {
         var stream = fs.createWriteStream('Web Scrapper.txt');{
           stream.once('open', function(fd){
             $(links).each(function (i, link) {
-              var urls = link.attribs.href;
-              console.log(urls);
-              stream.write(urls + '\n');
+              if(link && link.attribs && link.attribs.href){
+                var urls = link.attribs.href;
+                console.log(urls);
+                stream.write(urls + '\n');
+              }
             });
             stream.end();
           })
