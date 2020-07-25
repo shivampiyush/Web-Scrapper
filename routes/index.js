@@ -11,6 +11,7 @@ router.get('/', function (req, res, next) {
     // Function to Crawl the website by URLs by calling it resursively inside run function.
     const scrape = (url) => {
         return new Promise((resolve, reject) => {
+            console.log('test');
             let taskUrls = [];
             request(url, (err, res, body) => {
                 if (err) resolve([]);  //to handle ETIMEDOUT error
